@@ -84,7 +84,7 @@ MONGODB_URI=mongodb://localhost/nest_backend
 npm run dev
 ```
 
-### Backend (Development Mode)
+### Backend (Development Mode (Docker is not working yet still updating)) 
 Each microservice needs to be run independently:
 
 ```bash
