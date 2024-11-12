@@ -11,7 +11,7 @@ services:
       - /app/node_modules
     environment:
       - NEXT_PUBLIC_BACKEND_API_URL=http://api-gateway:3000/api
-      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - JWT_SECRET_KEY=
     depends_on:
       - api-gateway
 
@@ -30,7 +30,7 @@ services:
       - CORS_ORIGIN=http://frontend:3001
       - MAIN_PORT=3000
       - HOST=0.0.0.0
-      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - JWT_SECRET_KEY=
       - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
       - AUTH_SERVICE_PORT=4001
       - CHAT_SERVICE_PORT=5001
@@ -57,7 +57,7 @@ services:
       - HOST=0.0.0.0
       - MAIN_PORT=4001
       - MONGODB_URI=mongodb://mongo:27017/nest_backend
-      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - JWT_SECRET_KEY=
       - USER_SERVICE_PORT=6001
     depends_on:
       - mongo
@@ -77,8 +77,8 @@ services:
       - HOST=0.0.0.0
       - MAIN_PORT=5001
       - MONGODB_URI=mongodb://mongo:27017/nest_backend
-      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
-      - JWT_SOCKET_TOKEN=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - JWT_SECRET_KEY=
+      - JWT_SOCKET_TOKEN=
       - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
       - CHAT_SERVICE_PORT=5001
     depends_on:
@@ -115,7 +115,7 @@ services:
       - /app/node_modules
       - ./you-app-backend/shared:/shared
     environment:
-      - UPLOADTHING_TOKEN=eyJhcGlLZXkiOiJza19saXZlXzczZWEyOTgwOTUzMmJlY2UyZWFkNmMwYzUxZmE2YWNjMDYzZmQ5YWE2MGFkOGI1MTlhODhmMjU3NDViMDBiY2EiLCJhcHBJZCI6Inl5d2w0NWNsZW0iLCJyZWdpb25zIjpbInNlYTEiXX0=
+      - UPLOADTHING_TOKEN=
       - HOST=0.0.0.0
       - MAIN_PORT=6001
       - MONGODB_URI=mongodb://mongo:27017/nest_backend
