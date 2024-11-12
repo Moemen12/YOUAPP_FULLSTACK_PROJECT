@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.eslintrc.js
+.gitignore
+.prettierrc
+tsconfig.build.json
+tsconfig.json

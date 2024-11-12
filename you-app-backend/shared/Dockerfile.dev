@@ -1,0 +1,19 @@
+FROM node:20.18.0-alpine
+
+# Set the working directory
+WORKDIR /app/shared
+
+# Copy the package.json and package-lock.json files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy the shared library source code
+COPY . .
+
+# Build the shared library
+RUN npm run build
+
+# Define the shared library as the entrypoint
+CMD ["echo", "Shared library built successfully"]

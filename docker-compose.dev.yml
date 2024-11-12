@@ -1,0 +1,141 @@
+services:
+  frontend:
+    build:
+      context: ./you-app-frontend
+      dockerfile: ./you-app-frontend/Dockerfile.dev
+    container_name: youapp-frontend-container
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./you-app-frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_BACKEND_API_URL=http://api-gateway:3000/api
+      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+    depends_on:
+      - api-gateway
+
+  api-gateway:
+    build:
+      context: ./you-app-backend/api-gateway
+      dockerfile: ./you-app-backend/api-gateway/Dockerfile.dev
+    container_name: api-gateway-container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./you-app-backend/api-gateway:/app
+      - /app/node_modules
+      - ./you-app-backend/shared:/shared
+    environment:
+      - CORS_ORIGIN=http://frontend:3001
+      - MAIN_PORT=3000
+      - HOST=0.0.0.0
+      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - AUTH_SERVICE_PORT=4001
+      - CHAT_SERVICE_PORT=5001
+      - USER_SERVICE_PORT=6001
+    depends_on:
+      - auth-service
+      - user-service
+      - chat-service
+      - notification-service
+      - mongo
+
+  auth-service:
+    build:
+      context: ./you-app-backend/auth-microservice
+      dockerfile: ./you-app-backend/auth-microservice/Dockerfile.dev
+    container_name: auth-microservice
+    ports:
+      - "4001:4001"
+    volumes:
+      - ./you-app-backend/auth-microservice:/app
+      - /app/node_modules
+      - ./you-app-backend/shared:/shared
+    environment:
+      - HOST=0.0.0.0
+      - MAIN_PORT=4001
+      - MONGODB_URI=mongodb://mongo:27017/nest_backend
+      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - USER_SERVICE_PORT=6001
+    depends_on:
+      - mongo
+
+  chat-service:
+    build:
+      context: ./you-app-backend/chat-microservice
+      dockerfile: ./you-app-backend/chat-microservice/Dockerfile.dev
+    container_name: chat-microservice
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./you-app-backend/chat-microservice:/app
+      - /app/node_modules
+      - ./you-app-backend/shared:/shared
+    environment:
+      - HOST=0.0.0.0
+      - MAIN_PORT=5001
+      - MONGODB_URI=mongodb://mongo:27017/nest_backend
+      - JWT_SECRET_KEY=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - JWT_SOCKET_TOKEN=f902ce246aeece879b67fcf12c251295c9e9f42fd81571d439a70190eaed5959c4c711b068570b238da2c33013003b03
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - CHAT_SERVICE_PORT=5001
+    depends_on:
+      - mongo
+
+  notification-service:
+    build:
+      context: ./you-app-backend/notification-microservice
+      dockerfile: ./you-app-backend/notification-microservice/Dockerfile.dev
+    container_name: notification-microservice
+    ports:
+      - "6001:6001"
+    volumes:
+      - ./you-app-backend/notification-microservice:/app
+      - /app/node_modules
+      - ./you-app-backend/shared:/shared
+    environment:
+      - HOST=0.0.0.0
+      - MONGODB_URI=mongodb://mongo:27017/nest_backend
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - CHAT_SERVICE_PORT=5001
+    depends_on:
+      - mongo
+
+  user-service:
+    build:
+      context: ./you-app-backend/user-microservice
+      dockerfile: ./you-app-backend/user-microservice/Dockerfile.dev
+    container_name: user-microservice
+    ports:
+      - "6001:6001"
+    volumes:
+      - ./you-app-backend/user-microservice:/app
+      - /app/node_modules
+      - ./you-app-backend/shared:/shared
+    environment:
+      - UPLOADTHING_TOKEN=eyJhcGlLZXkiOiJza19saXZlXzczZWEyOTgwOTUzMmJlY2UyZWFkNmMwYzUxZmE2YWNjMDYzZmQ5YWE2MGFkOGI1MTlhODhmMjU3NDViMDBiY2EiLCJhcHBJZCI6Inl5d2w0NWNsZW0iLCJyZWdpb25zIjpbInNlYTEiXX0=
+      - HOST=0.0.0.0
+      - MAIN_PORT=6001
+      - MONGODB_URI=mongodb://mongo:27017/nest_backend
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    restart: on-failure:5
+    volumes:
+      - mongo-data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: on-failure:5
+
+volumes:
+  mongo-data:
