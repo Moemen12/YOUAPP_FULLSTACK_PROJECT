@@ -5,4 +5,3 @@ dist
 .gitignore
 .prettierrc
 tsconfig.build.json
-tsconfig.json

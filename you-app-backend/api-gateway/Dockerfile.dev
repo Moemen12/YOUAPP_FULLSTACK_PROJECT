@@ -1,15 +1,13 @@
 FROM node:20.18.0-alpine
 
-WORKDIR /app
+WORKDIR /youapp_fullstack_project/you-app-backend/api-gateway
 
-COPY package*.json ./
+COPY ./api-gateway/package*.json ./
 
 RUN npm ci
 
-COPY . .
-
-RUN npm run build
+COPY ./api-gateway .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:dev"]

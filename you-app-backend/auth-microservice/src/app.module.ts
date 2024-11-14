@@ -3,7 +3,6 @@ import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [

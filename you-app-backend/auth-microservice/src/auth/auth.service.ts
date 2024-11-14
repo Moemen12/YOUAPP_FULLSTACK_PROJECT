@@ -32,7 +32,7 @@ export class AuthService {
     }
 
     // Create the user
-    const userData: RegisterUserDto = { email, username, password }; // No hashing here; let the UserService handle it
+    const userData: RegisterUserDto = { email, username, password };
 
     try {
       const user = await this.userClientService.createUser(userData);

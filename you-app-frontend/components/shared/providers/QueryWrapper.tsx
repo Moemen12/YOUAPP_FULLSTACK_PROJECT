@@ -40,20 +40,20 @@ const QueryWrapper: React.FC<{ children: React.ReactNode }> = ({
   }, [currentPath, router]);
 
   // Add mobile check on client side
-  useEffect(() => {
-    if (!isMounted) return;
+  // useEffect(() => {
+  //   if (!isMounted) return;
 
-    const checkMobile = () => {
-      const isMobile = window.innerWidth <= 450;
-      if (!isMobile && currentPath !== "/desktop") {
-        router.push("/desktop");
-      }
-    };
+  //   const checkMobile = () => {
+  //     const isMobile = window.innerWidth <= 450;
+  //     if (!isMobile && currentPath !== "/desktop") {
+  //       router.push("/desktop");
+  //     }
+  //   };
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, [isMounted, currentPath, router]);
+  //   checkMobile();
+  //   window.addEventListener("resize", checkMobile);
+  //   return () => window.removeEventListener("resize", checkMobile);
+  // }, [isMounted, currentPath, router]);
 
   if (!isMounted) return null;
 

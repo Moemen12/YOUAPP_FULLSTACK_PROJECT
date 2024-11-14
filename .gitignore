@@ -1,0 +1,4 @@
+# Environment and secrets
+frontend.env
+api-gateway.env
+jwt_secret.txt
