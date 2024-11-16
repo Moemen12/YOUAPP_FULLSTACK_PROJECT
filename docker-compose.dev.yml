@@ -1,5 +1,5 @@
 services:
-  frontend:
+  youapp-frontend-container:
     build:
       context: ./you-app-frontend
       dockerfile: Dockerfile.dev
@@ -12,9 +12,9 @@ services:
     env_file:
       - ./you-app-frontend/.env
     depends_on:
-      - api-gateway
+      - api-gateway-container
 
-  api-gateway:
+  api-gateway-container:
     build:
       context: ./you-app-backend
       dockerfile: api-gateway/Dockerfile.dev
@@ -30,10 +30,10 @@ services:
     environment:
       - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5673
     depends_on:
-      - auth-service
+      - auth-microservice
       - mongo
 
-  auth-service:
+  auth-microservice:
     build:
       context: ./you-app-backend
       dockerfile: auth-microservice/Dockerfile.dev
@@ -49,23 +49,24 @@ services:
     depends_on:
       - mongo
 
-  # user-service:
-  #   build:
-  #     context: ./you-app-backend
-  #     dockerfile: user-microservice/Dockerfile.dev
-  #   container_name: user-microservice
-  #   ports:
-  #     - "6001:6001"
-  #   volumes:
-  #     - ./you-app-backend/user-microservice:/youapp_fullstack_project/you-app-backend/user-microservice
-  #     - /youapp_fullstack_project/you-app-backend/user-microservice/node_modules
-  #     - ./you-app-backend/shared:/youapp_fullstack_project/you-app-backend/shared
-  #   env_file:
-  #     - ./you-app-backend/user-microservice/.env
-  #   depends_on:
-  #     - mongo
+  user-microservice:
+    build:
+      context: ./you-app-backend
+      dockerfile: user-microservice/Dockerfile.dev
+    container_name: user-microservice
+    ports:
+      - "6001:6001"
+    volumes:
+      - ./you-app-backend/user-microservice:/youapp_fullstack_project/you-app-backend/user-microservice
+      # - /youapp_fullstack_project/you-app-backend/user-microservice/node_modules
+      - ./you-app-backend/shared:/youapp_fullstack_project/you-app-backend/shared
+    env_file:
+      - ./you-app-backend/user-microservice/.env
+    depends_on:
+      - mongo
 
   mongo:
+    container_name: mongo
     image: mongo:latest
     ports:
       - "27017:27017"
@@ -74,6 +75,7 @@ services:
       - mongo-data:/data/db
 
   rabbitmq:
+    container_name: rabbitmq
     image: rabbitmq:latest
     ports:
       - "5673:5672"
