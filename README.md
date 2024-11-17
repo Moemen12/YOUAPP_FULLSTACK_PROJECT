@@ -6,7 +6,7 @@ A modern fullstack application built with microservices architecture, featuring 
 
 - User authentication and authorization
 - Real-time chat functionality
-- Real-time notifications
+- Notifications
 - Profile management
 - Microservices architecture
 - API Gateway pattern
