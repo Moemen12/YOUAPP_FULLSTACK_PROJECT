@@ -25,21 +25,21 @@ A modern fullstack application built with microservices architecture, featuring 
 ### Authentication
 | Method | Endpoint | Description |
 |:------:|----------|-------------|
-| ![POST](https://img.shields.io/badge/POST-FF4D4D?style=flat-square) | `/api/login` | User login |
-| ![POST](https://img.shields.io/badge/POST-FF4D4D?style=flat-square) | `/api/register` | User registration |
+| ![POST](https://img.shields.io/badge/POST-FFD700?style=flat-square) | `/api/login` | User login |
+| ![POST](https://img.shields.io/badge/POST-FFD700?style=flat-square) | `/api/register` | User registration |
 
 ### Profile
 | Method | Endpoint | Description |
 |:------:|----------|-------------|
 | ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/profile` | Get user profile |
-| ![PUT](https://img.shields.io/badge/PUT-FFA500?style=flat-square) | `/api/profile` | Update user profile |
+| ![PUT](https://img.shields.io/badge/PUT-007BFF?style=flat-square) | `/api/profile` | Update user profile |
 
 ### Notifications
 | Method | Endpoint | Description |
 |:------:|----------|-------------|
 | ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/notification/get-invitations` | Get pending invitations |
-| ![POST](https://img.shields.io/badge/POST-FF4D4D?style=flat-square) | `/api/notification/invite` | Send invitation |
-| ![PATCH](https://img.shields.io/badge/PATCH-FFA500?style=flat-square) | `/api/notification/invitations/respond` | Respond to invitation |
+| ![POST](https://img.shields.io/badge/POST-FFD700?style=flat-square) | `/api/notification/invite` | Send invitation |
+| ![PATCH](https://img.shields.io/badge/PATCH-800080?style=flat-square) | `/api/notification/invitations/respond` | Respond to invitation |
 
 ### Chat
 | Method | Endpoint | Description |
