@@ -13,10 +13,10 @@ export const updateProfile = async (formData: FormData) => {
   return response.data;
 };
 
-// Get registered user
+// Get All invitees
 
 export const getRegisteredUsers = async () => {
-  const response = await axiosInstance.get(`/get-registered-user`, {
+  const response = await axiosInstance.get(`/chat/invitees`, {
     withCredentials: true,
   });
   return response.data;
@@ -59,7 +59,7 @@ export const respondToUserInvitation = async ({
 };
 
 export const deleteUser = async (receiver: string) => {
-  const response = await axiosInstance.delete("/delete-account", {
+  const response = await axiosInstance.delete("/chat/delete-account", {
     data: { receiver },
     withCredentials: true,
   });
@@ -68,7 +68,7 @@ export const deleteUser = async (receiver: string) => {
 };
 
 export const clearChat = async (receiver: string) => {
-  const response = await axiosInstance.delete("/clear-chat", {
+  const response = await axiosInstance.delete("/chat/clear-chat", {
     data: { receiver },
     withCredentials: true,
   });

@@ -13,11 +13,11 @@ export const getInvitationNotifications = async () => {
 };
 
 export const fetchAllUsersChat = async () => {
-  const response = await axiosInstance.get("/chats/view-chats");
+  const response = await axiosInstance.get("/chat/view-chats");
   return response.data;
 };
 
-export const fetchUserByUsername = async (username: string) => {
-  const response = await axiosInstance.get(`/chats/${username}`);
+export const fetchUserByUsername = async (receiverId: string) => {
+  const response = await axiosInstance.get(`/chat/${receiverId}`);
   return response.data;
 };

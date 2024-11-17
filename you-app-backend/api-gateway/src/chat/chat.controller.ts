@@ -17,25 +17,25 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { DeleteUserDto } from '@shared/dtos/delete-account.dto';
 
 @UseGuards(AuthGuard)
-@Controller()
+@Controller('chat')
 export class ChatController {
   constructor(@Inject('CHAT_SERVICE') private chatServiceProxy: ClientProxy) {}
   @HttpCode(HttpStatus.OK)
-  @Get('get-registered-user')
+  @Get('invitees')
   async getAllChats(@User() headerData: HeaderData) {
     return lastValueFrom(
       this.chatServiceProxy.send({ cmd: 'get-all-users' }, headerData),
     );
   }
 
-  @Get('/chats/view-chats')
+  @Get('view-chats')
   async getConnectedUsers(@User() headerData: HeaderData) {
     return lastValueFrom(
       this.chatServiceProxy.send({ cmd: 'view-connected-users' }, headerData),
     );
   }
 
-  @Get('/chats/:userId')
+  @Get(':userId')
   async getMessagesWith(
     @Param('userId') otherUserId: string,
     @User() { userId }: HeaderData,
