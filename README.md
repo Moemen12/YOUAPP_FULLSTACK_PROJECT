@@ -85,28 +85,14 @@ npm run dev
 ```
 
 ### Backend (Development Mode) 
-Each microservice needs to be run independently:
+This command will run all microservices without needing to run each one separately
 
 ```bash
-# API Gateway
-cd you-app-backend/api-gateway
-npm run start:dev
 
-# Auth Microservice
-cd you-app-backend/auth-microservice
-npm run start:dev
+cd you-app-backend
+npm run install:all
+npm run start:dev-all
 
-# Chat Microservice
-cd you-app-backend/chat-microservice
-npm run start:dev
-
-# Notification Microservice
-cd you-app-backend/notification-microservice
-npm run start:dev
-
-# User Microservice
-cd you-app-backend/user-microservice
-npm run start:dev
 ```
 
 Note: The `shared` folder is a common utilities folder and doesn't need to be run separately.
