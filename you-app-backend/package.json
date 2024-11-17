@@ -3,7 +3,7 @@
     "pm2": "^5.4.3"
   },
   "scripts": {
-    "start:services": "pm2 start pm2.config.js --env development",
+    "start:services": "pm2 start pm2.config.js --env production",
     "stop:services": "pm2 stop all && pm2 delete all",
     "restart:services": "pm2 restart all",
     "logs": "pm2 logs",
@@ -13,12 +13,18 @@
     "build:chat": "cd chat-microservice && npm install && npm run build",
     "build:notification": "cd notification-microservice && npm install && npm run build",
     "build:user": "cd user-microservice && npm install && npm run build",
-    "install:all": "npm run install:api-gateway && npm run install:auth && npm run install:chat && npm run install:notification && npm run install:user",
+    "install:all": "npm run install:api-gateway && npm run install:auth && npm run install:chat && npm run install:notification && npm run install:user && npm run install:shared",
     "install:api-gateway": "cd api-gateway && npm install",
     "install:auth": "cd auth-microservice && npm install",
     "install:chat": "cd chat-microservice && npm install",
     "install:notification": "cd notification-microservice && npm install",
     "install:user": "cd user-microservice && npm install",
-    "install:shared": "cd shared && npm install"
+    "install:shared": "cd shared && npm install",
+    "start:dev-all": "npm run dev:api-gateway && npm run dev:auth && npm run dev:chat && npm run dev:notification && npm run dev:user",
+    "dev:api-gateway": "cd api-gateway && npm run start:dev",
+    "dev:auth": "cd auth-microservice && npm run start:dev",
+    "dev:chat": "cd chat-microservice && npm run start:dev",
+    "dev:notification": "cd notification-microservice && npm run start:dev",
+    "dev:user": "cd user-microservice && npm run start:dev"
   }
 }
