@@ -6,7 +6,7 @@ A modern fullstack application built with microservices architecture, featuring 
 
 - User authentication and authorization
 - Real-time chat functionality
-- Notification system
+- Real-time notifications
 - Profile management
 - Microservices architecture
 - API Gateway pattern
@@ -17,29 +17,30 @@ A modern fullstack application built with microservices architecture, featuring 
 - **Backend**: Node.js, NestJS
 - **Database**: MongoDB
 - **Message Broker**: RabbitMQ
+- **Real-time Communication**: Socket.IO/WebSocket
 - **File Upload**: UploadThing
 
 ## 📋 API Endpoints
 
 ### Authentication
-- `POST /api/login` - User login
-- `POST /api/register` - User registration
+- <span style="color: #FF4D4D">POST</span> `/api/login` - User login
+- <span style="color: #FF4D4D">POST</span> `/api/register` - User registration
 
 ### Profile
-- `GET /api/profile` - Get user profile
-- `PUT /api/profile` - Update user profile
+- <span style="color: #4CAF50">GET</span> `/api/profile` - Get user profile
+- <span style="color: #FFA500">PUT</span> `/api/profile` - Update user profile
 
 ### Notifications
-- `GET /api/notification/get-invitations` - Get pending invitations
-- `POST /api/notification/invite` - Send invitation
-- `PATCH /api/notification/invitations/respond` - Respond to invitation
+- <span style="color: #4CAF50">GET</span> `/api/notification/get-invitations` - Get pending invitations
+- <span style="color: #FF4D4D">POST</span> `/api/notification/invite` - Send invitation
+- <span style="color: #FFA500">PATCH</span> `/api/notification/invitations/respond` - Respond to invitation
 
 ### Chat
-- `GET /api/chat/view-chats` - View all chats
-- `GET /api/chat/invitees` - Get potential chat invitees
-- `GET /api/chat/:userId` - Get chat with specific user
-- `DELETE /api/chat/delete-account` - Delete user account
-- `DELETE /api/chat/clear-chat` - Clear chat history
+- <span style="color: #4CAF50">GET</span> `/api/chat/view-chats` - View all chats
+- <span style="color: #4CAF50">GET</span> `/api/chat/invitees` - Get potential chat invitees
+- <span style="color: #4CAF50">GET</span> `/api/chat/:userId` - Get chat with specific user
+- <span style="color: #FF0000">DELETE</span> `/api/chat/delete-account` - Delete user account
+- <span style="color: #FF0000">DELETE</span> `/api/chat/clear-chat` - Clear chat history
 
 ## 🏗️ Project Structure
 
@@ -75,6 +76,7 @@ cd YOUAPP_FULLSTACK_PROJECT
 ### Frontend (.env)
 ```env
 NEXT_PUBLIC_BACKEND_API_URL=http://localhost:3000/api
+NEXT_PUBLIC_SOCKET_URL=http://localhost:3000
 JWT_SECRET_KEY=
 ```
 
@@ -110,6 +112,7 @@ JWT_SECRET_KEY=
 JWT_SOCKET_TOKEN=
 RABBITMQ_URL=amqp://guest:guest@127.0.0.1:5672
 CHAT_SERVICE_PORT=6001
+SOCKET_PORT=3001
 ```
 
 #### Notification Microservice (.env)
@@ -163,6 +166,26 @@ Docker implementation is currently in progress. Stay tuned for containerization 
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📝 License
+## 📄 License
 
-[Add your license information here]
+MIT License
+
+Copyright (c) 2024 YOUAPP
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
