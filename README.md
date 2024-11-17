@@ -23,24 +23,33 @@ A modern fullstack application built with microservices architecture, featuring 
 ## 📋 API Endpoints
 
 ### Authentication
-- <span style="color: #FF4D4D">POST</span> `/api/login` - User login
-- <span style="color: #FF4D4D">POST</span> `/api/register` - User registration
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| ![POST](https://img.shields.io/badge/POST-FF4D4D?style=flat-square) | `/api/login` | User login |
+| ![POST](https://img.shields.io/badge/POST-FF4D4D?style=flat-square) | `/api/register` | User registration |
 
 ### Profile
-- <span style="color: #4CAF50">GET</span> `/api/profile` - Get user profile
-- <span style="color: #FFA500">PUT</span> `/api/profile` - Update user profile
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/profile` | Get user profile |
+| ![PUT](https://img.shields.io/badge/PUT-FFA500?style=flat-square) | `/api/profile` | Update user profile |
 
 ### Notifications
-- <span style="color: #4CAF50">GET</span> `/api/notification/get-invitations` - Get pending invitations
-- <span style="color: #FF4D4D">POST</span> `/api/notification/invite` - Send invitation
-- <span style="color: #FFA500">PATCH</span> `/api/notification/invitations/respond` - Respond to invitation
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/notification/get-invitations` | Get pending invitations |
+| ![POST](https://img.shields.io/badge/POST-FF4D4D?style=flat-square) | `/api/notification/invite` | Send invitation |
+| ![PATCH](https://img.shields.io/badge/PATCH-FFA500?style=flat-square) | `/api/notification/invitations/respond` | Respond to invitation |
 
 ### Chat
-- <span style="color: #4CAF50">GET</span> `/api/chat/view-chats` - View all chats
-- <span style="color: #4CAF50">GET</span> `/api/chat/invitees` - Get potential chat invitees
-- <span style="color: #4CAF50">GET</span> `/api/chat/:userId` - Get chat with specific user
-- <span style="color: #FF0000">DELETE</span> `/api/chat/delete-account` - Delete user account
-- <span style="color: #FF0000">DELETE</span> `/api/chat/clear-chat` - Clear chat history
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/chat/view-chats` | View all chats |
+| ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/chat/invitees` | Get potential chat invitees |
+| ![GET](https://img.shields.io/badge/GET-4CAF50?style=flat-square) | `/api/chat/:userId` | Get chat with specific user |
+| ![DELETE](https://img.shields.io/badge/DELETE-FF0000?style=flat-square) | `/api/chat/delete-account` | Delete user account |
+| ![DELETE](https://img.shields.io/badge/DELETE-FF0000?style=flat-square) | `/api/chat/clear-chat` | Clear chat history |
+
 
 ## 🏗️ Project Structure
 
